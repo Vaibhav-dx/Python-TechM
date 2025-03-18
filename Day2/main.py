@@ -73,7 +73,18 @@ def calculate_discount(price, discount):
     return price - (price * discount / 100)
 
 print(calculate_discount(100, '10%'))
+# correct code
+def calculate_discount(price, discount):
+    try:
+        if isinstance(discount, str) and discount.endswith('%'):
+            discount = float(discount.strip('%'))
+        
+        return price - (price * discount / 100)
+    except (ValueError, TypeError):
+        return "Invalid discount format"
 
+print(calculate_discount(100, '10%'))  # Output: 90.0
+print(calculate_discount(200, 'abc'))  # Output: Invalid discount format
 
 # 5. Rubber Duck Debugging
 numbers = [1, 2, 3, 4, 5]
