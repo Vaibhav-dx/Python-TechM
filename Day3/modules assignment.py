@@ -101,4 +101,54 @@ end = time.time()
 
 print(f"Multiple imports time: {end - start:.6f} seconds")
 
+#Q7.Investigate sys.path
+import sys
+print(sys.path)
+# To add custom path
+import sys
 
+# Add a custom directory
+sys.path.append('/custom/path/to/modules')
+
+# Now you can import your module from that path
+import mymodule  
+
+print(mymodule.some_function()) 
+
+# Q8. Mocking Modules for Testing
+from unittest import mock
+import math  # Import the actual module
+
+# Mocking math.sqrt to always return 100
+with mock.patch('math.sqrt', return_value=100):
+    print(math.sqrt(25))  # 100
+
+# Outside the mock context, it works normally
+print(math.sqrt(25))  #  5.0
+
+# Q9. Import Side Effects
+# Create a Module (my_module.py)
+print("This runs on import!")
+
+def my_function():
+    return "Hello from my_function!"
+# import module in (main.py)
+import my_module
+
+print("Import is done!")
+print(my_module.my_function()) 
+
+# Q10.Investigate Python’s Import Caching
+# mymodule.py
+print("Module mymodule is being imported!")
+
+def hello():
+    return "Hello from mymodule!"
+# main.py
+import sys
+import mymodule  #First import
+
+print(sys.modules['mymodule'])  #if mymodule is in cache
+
+import mymodule  # Second import
+print("Re-imported mymodule!")
