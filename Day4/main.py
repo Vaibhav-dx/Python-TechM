@@ -151,3 +151,121 @@ list1 = [1, 3, 5, 7]
 list2 = [2, 4, 6, 8]
 print(merge_sorted_lists(list1, list2))  
 # Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+
+# # Assignement-2
+#Q1.Task: Identify the longest pipeline and return pipelines taking more than a given threshold time.
+
+def func(pipelines,threshold):
+    longest=max(pipelines,key=lambda x:x[1])
+
+    exceeding=[p for p in pipelines if p[1]>threshold]
+    return longest,exceeding
+
+pipelines = [
+    ("Data Ingestion", 30),
+    ("Preprocessing", 45),
+    ("Model Training", 120),
+    ("Evaluation", 20)
+]
+threshold = 40
+
+longest, exceeding = func(pipelines, threshold)
+
+# Output results
+print("Longest Pipeline:", longest)
+print("Pipelines Exceeding Threshold:", exceeding)
+
+
+
+logs = """ERROR 404: Not Found
+INFO: Connection established
+ERROR 500: Internal Server Error
+ERROR 404: Not Found
+"""
+
+#Q2. Extract unique error codes
+logs = """ERROR 404: Not Found
+INFO: Connection established
+ERROR 500: Internal Server Error
+ERROR 404: Not Found
+"""
+error_codes = {line.split()[1] for line in logs.split("\n") if line.startswith("ERROR")}#logs.split("\n")-splits logs into seprate lines
+# line.startswith("ERROR")-checking condition
+# line.split()[1] again splitting, and acessing second element
+
+print(error_codes)  # Output: {'404', '500'}
+
+# Q3.Task: Parse key-value pairs from a configuration string.
+# Input:
+config = "host=127.0.0.1;port=8080;mode=debug"
+
+# Split the string and create a list of tuples
+config_tuples = [tuple(pair.split("=")) for pair in config.split(";")]
+# splitting by ;
+# tuple(pair.split("=")) agin splitting by "=" and converting to tuple
+print(config_tuples)
+
+
+# Q4.Task: Extract unique hashtags from a social media post.
+post = "Loving the new #Python course! #Coding #Python #Learning"
+
+# Split the post into words
+words = post.split()
+
+# Extract unique hashtags
+hashtags = {x for x in words if x.startswith("#")}
+
+print(hashtags)  # Output: {'#Python', '#Coding', '#Learning'}
+
+# Q5.Extract every third character from a string.
+secret_message = "hweollrolwd"
+decoded_message = ""
+
+for i in range(0, len(secret_message), 3):  # Step size of 3
+    decoded_message += secret_message[i]
+
+print(decoded_message)  # Output: 'hello world'
+
+# Q6.Find the product with the highest quantity.
+inventory = [
+    ("Apples", 50),
+    ("Oranges", 75),
+    ("Bananas", 30)
+]
+largest=max(inventory,key=lambda x:x[1])
+print(largest)
+
+# Q7.Extract scores from a survey string and find min/max.
+survey_data = "5,3,4,1,2"
+
+# Convert each string number to an integer using list comprehension
+scores = [int(x) for x in survey_data.split(",")]
+
+# Find max and min values
+maxscore = max(scores)
+minscore = min(scores)
+
+print(f"Max Score: {maxscore}, Min Score: {minscore}")
+
+# Q9.Categorize tickets based on message length.
+def categorize_message(message):
+    length = len(message)
+    
+    if length < 20:
+        category = "Short"
+    elif 20 <= length <= 50:
+        category = "Medium"
+    else:
+        category = "Long"
+    
+    return f"Category: {category}"
+
+message = "My account is locked, please help!"
+print(categorize_message(message))  # Output: Category: Medium
+
+# Q10.
+products = ["Laptop", "Smartphone", "Wireless Headphones"]
+longest = max(products, key=len)  # Finds the longest product name
+print(longest)  # Output: 'Wireless Headphones'
