@@ -178,13 +178,6 @@ print("Longest Pipeline:", longest)
 print("Pipelines Exceeding Threshold:", exceeding)
 
 
-
-logs = """ERROR 404: Not Found
-INFO: Connection established
-ERROR 500: Internal Server Error
-ERROR 404: Not Found
-"""
-
 #Q2. Extract unique error codes
 logs = """ERROR 404: Not Found
 INFO: Connection established
@@ -204,7 +197,7 @@ config = "host=127.0.0.1;port=8080;mode=debug"
 # Split the string and create a list of tuples
 config_tuples = [tuple(pair.split("=")) for pair in config.split(";")]
 # splitting by ;
-# tuple(pair.split("=")) agin splitting by "=" and converting to tuple
+# tuple(pair.split("=")) again splitting by "=" and converting to tuple
 print(config_tuples)
 
 
@@ -269,3 +262,91 @@ print(categorize_message(message))  # Output: Category: Medium
 products = ["Laptop", "Smartphone", "Wireless Headphones"]
 longest = max(products, key=len)  # Finds the longest product name
 print(longest)  # Output: 'Wireless Headphones'
+
+
+# Q11.Task: Extract the last 10 sensor readings and calculate the average.
+# # Input:
+sensor_readings = [12, 15, 14, 16, 20, 22, 21, 23, 25, 30, 28, 27]
+last_10=[]
+for i in range(len(sensor_readings)-1, 1, -1):
+    last_10.append(sensor_readings[i])
+print(last_10)
+average = sum(last_10) / len(last_10)
+print("Average:", average) #output=22
+
+# Q12.# Task: Reverse the list of transactions.
+# Input:
+transactions = [100, -50, 200, -150, 50]
+reverse=[]
+for i in range(len(transactions)-1,-1,-1):
+    reverse.append(transactions[i])
+print(reverse)
+# [50, -150, 200, -50, 100]
+
+# Alternate
+transactions = [100, -50, 200, -150, 50]
+reverse = transactions[::-1]  # Reverse using slicing
+print(reverse)
+
+# Q13.Task: Format logs with timestamps.
+logs = ["System Boot", "Network Connected", "User Login"]
+timestamp = "2025-03-20"
+formatted_logs = [f"{timestamp}: {log}" for log in logs]
+
+print(formatted_logs)
+
+# Q14.Task: Generate patterns with repetition.
+# Input:
+symbol = "*"
+pattern=(symbol+" ")*5
+print(pattern)
+
+# Q15.Count keyword occurrences.
+feedback = "The product is excellent, absolutely excellent!"
+keyword = "excellent"
+
+count = feedback.lower().count(keyword)  # Convert to lowercase for case insensitivity
+
+print(f"'{keyword}' count: {count}")
+
+# Q16.Task: Find the index of the first occurrence of "error".
+log = "INFO: All systems go. ERROR: Failed to start service."
+keyword = "ERROR"
+index = log.find(keyword)  # Find the first occurrence
+print(f"Index: {index}")
+
+
+# Q17.Task: Parse CSV data into lists.
+csv_data = "Alice,25,Engineer\nBob,30,Doctor\nCharlie,22,Artist"
+# First, split by new lines, then split each row by commas
+new_csv = [row.split(",") for row in csv_data.split("\n")]
+
+print(new_csv)
+
+# Q18.Task: Generate usernames from full names.
+names = ["Alice Wonderland", "Bob Builder", "Charlie Chaplin"]
+# Extract first letter of first name + last name
+usernames = [f"{name.split()[0][0]}{name.split()[1]}" for name in names]
+print(usernames)
+
+
+
+# Q19.Task: Count messages per user from chat logs.
+chat_logs = [
+    "Alice: Hi!",
+    "Bob: Hello!",
+    "Alice: How are you?",
+    "Bob: I’m good, thanks!"
+]
+
+# Dictionary to store message counts
+message_count = {}
+for log in chat_logs:
+    user = log.split(":")[0]  # Extract username before ':'
+    if user in message_count:
+        message_count[user] += 1  # Increment count if user exists
+    else:
+        message_count[user] = 1  # Initialize count if user is new
+for user, count in message_count.items():
+    print(f"{user}: {count} messages")
+

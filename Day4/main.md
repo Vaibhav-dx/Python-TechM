@@ -48,3 +48,7 @@ Output-(2, 3), because it uses slicing to extract elements starting from index 1
 # 12.Explain the difference between list.append() and list.extend().
 The append() method in Python adds an entire element as a single item to the end of a list, meaning if you append a list, it will be nested within the original list. For example, numbers = [1, 2, 3]; numbers.append([4, 5]) results in [1, 2, 3, [4, 5]]. 
 Extend() adds elements from an iterable individually to the list. So, numbers.extend([4, 5]) results in [1, 2, 3, 4, 5]. The key difference is that append() increases the list length by one, while extend() expands it based on the number of elements in the iterable.
+
+
+
+
