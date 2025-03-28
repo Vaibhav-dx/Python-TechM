@@ -6,10 +6,15 @@ for i in range(5)
 for i in range(5):
     print(i)
 
-# Arithmetic Error-Division by Zero error
-x = 10 / 0
-# correct code
-x=10/2
+
+# Zero Division error
+try:
+    x = 10 / 0  # This will raise a ZeroDivisionError
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+    x = 10 / 2  # Correcting the division
+    print("Corrected value:", x)
+
 
 
 # Logical error- wrong formula
