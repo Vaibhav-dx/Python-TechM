@@ -216,10 +216,10 @@ print(hashtags)  # Output: {'#Python', '#Coding', '#Learning'}
 secret_message = "hweollrolwd"
 decoded_message = ""
 
-for i in range(0, len(secret_message), 3):  # Step size of 3
+for i in range(0, len(secret_message), 2):  
     decoded_message += secret_message[i]
 
-print(decoded_message)  # Output: 'hello world'
+print(decoded_message)  
 
 # Q6.Find the product with the highest quantity.
 inventory = [
@@ -241,6 +241,18 @@ maxscore = max(scores)
 minscore = min(scores)
 
 print(f"Max Score: {maxscore}, Min Score: {minscore}")
+
+#Q8.# Define users and roles
+users = ["Alice", "Bob", "Charlie"]
+roles = ("Admin", "Editor", "Viewer")
+
+# Create a dictionary mapping users to roles
+access_control = dict(zip(users, roles))
+
+# Print user roles
+for user, role in access_control.items():
+    print(f"{user}: {role}")
+
 
 # Q9.Categorize tickets based on message length.
 def categorize_message(message):
